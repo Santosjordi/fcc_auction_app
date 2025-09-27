@@ -35,7 +35,7 @@ func (r *UserRepository) Create(ctx context.Context, user *UserEntityMongo) erro
 	return nil
 }
 
-func (r *UserRepository) FindByID(ctx context.Context, id string) (*user_entity.User, *internal_error.InternalError) {
+func (r *UserRepository) FindUserByID(ctx context.Context, id string) (*user_entity.User, *internal_error.InternalError) {
 	filter := bson.M{"_id": id}
 	var user UserEntityMongo
 	err := r.Collection.FindOne(ctx, filter).Decode(&user)
